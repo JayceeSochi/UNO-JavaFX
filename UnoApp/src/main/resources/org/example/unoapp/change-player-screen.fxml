@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unoapp.PlayerChangeScreenController">
+   <children>
+      <Label id="nextPlayerLbl" fx:id="nextPlayerLbl" layoutX="35.0" layoutY="44.0" text="Pass the computer to the next player!">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Button id="readyButton" fx:id="readyButton" layoutX="225.0" layoutY="226.0" mnemonicParsing="false" onAction="#StartNextTurn" prefHeight="71.0" prefWidth="150.0" text="Ready!">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Label layoutX="135.0" layoutY="138.0" text="Press ready when you are ready to take your turn!">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
