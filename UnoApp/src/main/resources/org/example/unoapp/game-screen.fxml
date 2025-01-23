@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="currentPlayerTurn" layoutX="183.0" layoutY="31.0" text="It is Player #'s Turn!">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <VBox fx:id="playersCardsNumDisplay" layoutX="13.0" layoutY="14.0" prefHeight="255.0" prefWidth="120.0">
+         <children>
+            <Pane fx:id="playerCardNumInfo" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="playerNumber" layoutY="5.0" text="Player 1" />
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="60.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@cards-icon.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="playerCardAmount" layoutX="87.0" layoutY="6.0" text="x1" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <Label fx:id="invalidMoveMessage" layoutX="233.0" layoutY="67.0" text="That move is not allowed!" />
+      <HBox alignment="CENTER" layoutX="-1.0" layoutY="270.0" prefHeight="130.0" prefWidth="600.0" style="-fx-border-color: black;">
+         <children>
+            <ImageView fitHeight="112.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@UNO_cards_deck.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D height="113.0" width="76.0" />
+               </viewport>
+            </ImageView>
+         </children>
+      </HBox>
+   </children>
+</Pane>
