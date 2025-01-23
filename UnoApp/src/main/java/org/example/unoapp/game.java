@@ -1,17 +1,20 @@
-/**
- * @author ggarcia
- * @createdOn 1/23/2025 at 3:06 PM
- * @projectName UnoApp
- * @packageName org.example.unoapp;
- */
 package org.example.unoapp;
+
+import java.util.Random;
 
 public class game {
     card[] deck = new card[108];
     card[] discardPile = new card[108];
     card[] hand = new card[108];
+    Random rand = new Random();
 
+
+    private card[] remakeDeck(card[] discardPile){
+        deck = discardPile;
+        return deck;
+    }
     private card[] makeDeck() {
+        card[] newDeck = new card[108];
         int c = 0;
         colors color = null;
         int value = 0;
@@ -38,7 +41,7 @@ public class game {
                     value = 1;
                 }
                 card card = new card(value, color);
-                deck[j+c] = card;
+                newDeck[j+c] = card;
                 value++;
             }
         }
@@ -47,13 +50,22 @@ public class game {
         value = 13;
         for (int i = 0; i <= 4; i++) {
             card card = new card(value, color);
-            deck[i+c] = card;
+            newDeck[i+c] = card;
         }
         c = 104;
         value = 14;
         for (int i = 0; i <= 4; i++) {
             card card = new card(value, color);
-            deck[i+c] = card;
+            newDeck[i+c] = card;
+        }
+        for (int i = 0; i <= 108; i++) {
+            while (true) {
+                int randCard = rand.nextInt(109);
+                if (newDeck[randCard] != null) {
+                    deck[i] = newDeck[randCard];
+                    break;
+                }
+            }
         }
         return deck;
     }
