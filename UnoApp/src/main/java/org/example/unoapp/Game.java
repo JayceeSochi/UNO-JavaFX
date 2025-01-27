@@ -13,7 +13,9 @@ public class Game {
 
     private ArrayList<Card> hand = new ArrayList<>();
 
-    private String winner = "";
+    private static String winner = "";
+
+    static boolean gameEnd = false;
 
     static private int playerCount;
 
@@ -30,6 +32,12 @@ public class Game {
         MakeDeck();
         SetupPlayers();
         DealHands();
+
+        PlayGame();
+    }
+
+    public static void PlayGame() {
+        CyclePlayer();
     }
 
     ////////////////////////////////////////////////////////////
@@ -114,16 +122,42 @@ public class Game {
         playerTurn.getCards().add(discard);
     }
 
-    // playCard(Card)
+    public static void CyclePlayer() {
+        if (playerTurn != players.get(players.size() - 1)) {
+            playerTurn = players.get(players.indexOf(playerTurn) + 1);
+        }
 
+        System.out.println("It is " + playerTurn.getName() + "s turn.");
+    }
 
-    // rotatePlayer()
-
-    // playSkip()
-
-    // reverseOrder()
+    public static void playCard(Card card) {
+        // TBA (Valid Logic)
+        if (card.getValue() == 14) {
+            // Draw 4 Logic
+        } else if (card.getValue() == 13) {
+            // Color Swap Logic
+        } else if (card.getValue() == 12) {
+            // Draw 2 Logic
+        } else if (card.getValue() == 11) {
+            // Reverse Logic
+        } else if (card.getValue() == 10) {
+            // Skip Logic
+        } else {
+            // Default Logic
+        }
+    }
 
     // checkUNO()
+    public static void checkUNO() {
+        for (Player p : players) {
+            if (p.getCards().size() == 1 && winner == "") {
+                winner = p.getName();
+            }
+        }
+    }
 
     // winScreen()
+    public static void winScreen() {
+
+    }
 }
