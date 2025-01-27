@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Game {
     static ArrayList<Card> deck;
-    Card discard;
+    static Card discard;
     static Player playerTurn;
 
     static ArrayList<Player> players = new ArrayList<>();
@@ -32,12 +32,6 @@ public class Game {
         MakeDeck();
         SetupPlayers();
         DealHands();
-
-        PlayGame();
-    }
-
-    public static void PlayGame() {
-        CyclePlayer();
     }
 
     ////////////////////////////////////////////////////////////
@@ -125,33 +119,56 @@ public class Game {
     public static void CyclePlayer() {
         if (playerTurn != players.get(players.size() - 1)) {
             playerTurn = players.get(players.indexOf(playerTurn) + 1);
+        } else {
+            playerTurn = players.get(0);
         }
 
         System.out.println("It is " + playerTurn.getName() + "s turn.");
     }
 
-    public static void playCard(Card card) {
+    // Playing the card (unsure if parameter is needed)
+    public static void playCard (Card card) {
         // TBA (Valid Logic)
+        // If Card is Same Color or Same Symbol or Black Color
         if (card.getValue() == 14) {
-            // Draw 4 Logic
+            if (playerTurn != players.get(players.size() - 1)) {
+                DrawFour(players.get(players.indexOf(playerTurn) + 1));
+            } else {
+                DrawFour(players.get(0));
+            }
         } else if (card.getValue() == 13) {
             // Color Swap Logic
         } else if (card.getValue() == 12) {
-            // Draw 2 Logic
+            if (playerTurn != players.get(players.size() - 1)) {
+                DrawTwo(players.get(players.indexOf(playerTurn) + 1));
+            } else {
+                DrawTwo(players.get(0));
+            }
         } else if (card.getValue() == 11) {
             // Reverse Logic
+            Collections.reverse(players);
         } else if (card.getValue() == 10) {
-            // Skip Logic
+            playerTurn = players.get(players.indexOf(playerTurn) + 1);
         } else {
             // Default Logic
         }
+
+        discard = card;
+
+        // TBA (Invalid Logic
+
+        CyclePlayer();
     }
 
     // checkUNO()
     public static void checkUNO() {
         for (Player p : players) {
-            if (p.getCards().size() == 1 && winner == "") {
+            if (p.getCards().size() == 1 && winner.equals("")) {
                 winner = p.getName();
+            }
+
+            if (p.getCards().size() > 1 && winner.equals(p.getName())) {
+                winner = "";
             }
         }
     }
@@ -159,5 +176,29 @@ public class Game {
     // winScreen()
     public static void winScreen() {
 
+    }
+
+    public static void DrawFour(Player player) {
+        Random rand = new Random();
+
+        for (int i = 0; i < 4; i++) {
+            Card card = deck.get(rand.nextInt(deck.size()));
+
+            deck.remove(card);
+            player.getCards().add(card);
+        }
+
+        // WIP Prompt Choose Color
+    }
+
+    public static void DrawTwo(Player player) {
+        Random rand = new Random();
+
+        for (int i = 0; i < 2; i++) {
+            Card card = deck.get(rand.nextInt(deck.size()));
+
+            deck.remove(card);
+            player.getCards().add(card);
+        }
     }
 }
