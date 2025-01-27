@@ -1,72 +1,79 @@
 package org.example.unoapp;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class game {
-    card[] deck = new card[108];
-    card[] discardPile = new card[108];
-    card[] hand = new card[108];
-    Random rand = new Random();
+public class Game {
+    static ArrayList<Card> deck = MakeDeck();
+    Card discard;
 
+    private ArrayList<Card> hand = new ArrayList<>();
 
-    private card[] remakeDeck(card[] discardPile){
-        deck = discardPile;
-        return deck;
-    }
-    private card[] makeDeck() {
-        card[] newDeck = new card[108];
-        int c = 0;
-        colors color = null;
-        int value = 0;
-        for (int i = 0; i <= 4; i++) {
-            value = 0;
-            if (i == 1) {
-                color = colors.red;
-            }
-            if (i == 2) {
-                color = colors.blue;
+    private String winner = "";
 
-                c=25;
-            }
-            if (i == 3) {
-                color = colors.green;
-                c=50;
-            }
-            if (i == 4) {
-                color = colors.yellow;
-                c=75;
-            }
-            for (int j = 0; j <= 25; j++) {
-                if (value == 13) {
-                    value = 1;
+    private int players;
+    private int handSize;
+
+    /////////////////////////////////////////////////////////////
+    public static ArrayList<Card> MakeDeck() {
+        ArrayList<Card> deckBuild = new ArrayList<>();
+
+        for (int ii = 0; ii < 4; ii++) {
+
+            for (int i = 0; i < 13; i++) {
+                Card newCard = new Card();
+
+                Card.Color cardColor;
+
+                switch (ii) {
+                    case 1:
+                        cardColor = Card.Color.Red;
+                        break;
+                    case 2:
+                        cardColor = Card.Color.Blue;
+                        break;
+                    case 3:
+                        cardColor = Card.Color.Yellow;
+                        break;
+                    case 4:
+                        cardColor = Card.Color.Green;
+                        break;
                 }
-                card card = new card(value, color);
-                newDeck[j+c] = card;
-                value++;
-            }
-        }
-        color = colors.black;
-        c = 100;
-        value = 13;
-        for (int i = 0; i <= 4; i++) {
-            card card = new card(value, color);
-            newDeck[i+c] = card;
-        }
-        c = 104;
-        value = 14;
-        for (int i = 0; i <= 4; i++) {
-            card card = new card(value, color);
-            newDeck[i+c] = card;
-        }
-        for (int i = 0; i <= 108; i++) {
-            while (true) {
-                int randCard = rand.nextInt(109);
-                if (newDeck[randCard] != null) {
-                    deck[i] = newDeck[randCard];
-                    break;
+
+                newCard.setValue(i);
+
+                if (i == 0) {
+                    deckBuild.add(newCard);
+                } else {
+                    deckBuild.add(newCard);
+                    deckBuild.add(newCard);
                 }
             }
         }
-        return deck;
+
+        for (int i = 13; i <= 14; i++) {
+            Card newCard = new Card();
+
+            Card.Color cardColor = Card.Color.Black;
+
+            newCard.setValue(i);
+
+            for (int ii = 0; ii < 4; ii++) {
+                deckBuild.add(newCard);
+            }
+        }
+
+        return deckBuild;
     }
+
+    public static void DrawCard() {
+        Random rand = new Random();
+        Card discard = deck.get(rand.nextInt(deck.size()));
+        deck.remove(discard);
+
+        System.out.println("Deck Size: " + deck.size());
+        System.out.println("Card: " + discard.toString());
+    }
+
+    // playCard(Card)
 }

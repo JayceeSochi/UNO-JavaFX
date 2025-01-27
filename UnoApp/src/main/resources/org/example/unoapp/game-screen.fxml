@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unoapp.GameController">
    <children>
-      <Label fx:id="currentPlayerTurn" layoutX="183.0" layoutY="31.0" text="It is Player #'s Turn!">
+      <Label fx:id="currentPlayerTurn" layoutX="147.0" layoutY="25.0" text="Make your move Player #!">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
@@ -33,17 +33,33 @@
          </children>
       </VBox>
       <Label fx:id="invalidMoveMessage" layoutX="233.0" layoutY="67.0" text="That move is not allowed!" />
-      <HBox alignment="CENTER" layoutX="-1.0" layoutY="270.0" prefHeight="130.0" prefWidth="600.0" style="-fx-border-color: black;">
+      <HBox id="playerDeck" fx:id="PlayerDeck" alignment="CENTER" layoutX="-1.0" layoutY="270.0" prefHeight="130.0" prefWidth="600.0" style="-fx-border-color: black;">
          <children>
-            <ImageView fitHeight="112.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="card" fitHeight="112.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@UNO_cards_deck.png" />
                </image>
                <viewport>
-                  <Rectangle2D height="113.0" width="76.0" />
+                  <Rectangle2D height="113.0" width="75.5" />
                </viewport>
             </ImageView>
          </children>
       </HBox>
+      <ImageView fx:id="drawPile" fitHeight="150.0" fitWidth="200.0" layoutX="321.0" layoutY="96.0" onMouseClicked="#DrawCard" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Uno_card_back.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ImageView fx:id="discardPile" fitHeight="150.0" fitWidth="200.0" layoutX="185.0" layoutY="96.0" onMouseClicked="#PlayCard" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@UNO_cards_deck.png" />
+         </image>
+         <viewport>
+            <Rectangle2D height="113.0" width="75.5" />
+         </viewport>
+      </ImageView>
    </children>
 </Pane>

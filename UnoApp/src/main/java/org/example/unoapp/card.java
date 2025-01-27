@@ -1,18 +1,26 @@
-/**
- * @author ggarcia
- * @createdOn 1/23/2025 at 3:03 PM
- * @projectName UnoApp
- * @packageName org.example.unoapp;
- */
 package org.example.unoapp;
 
-public class card {
-    int value;
-    colors color;
-    public card(int value, colors color) {
-        setColor(color);
-        setValue(value);
+public class Card {
+    public enum Color {
+        Red("Red"),
+        Blue("Blue"),
+        Yellow("Yellow"),
+        Green("Green"),
+        Black("Black");
+
+        private String label;
+
+        Color(String label) {
+            this.label = label;
+        }
+
+        @Override
+        public String toString() {
+            return label;
+        }
     }
+
+    private int value;
 
     public int getValue() {
         return value;
@@ -22,11 +30,11 @@ public class card {
         this.value = value;
     }
 
-    public colors getColor() {
-        return color;
-    }
-
-    public void setColor(colors color) {
-        this.color = color;
+    // Needs Fixing
+    @Override
+    public String toString() {
+        return "Card {" +
+                "value=" + value +
+                " || color=" + Color.values().toString() + '}';
     }
 }
