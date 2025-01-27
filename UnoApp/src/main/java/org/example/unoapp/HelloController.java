@@ -7,7 +7,7 @@ import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 import java.util.ArrayList;
 
 public class HelloController {
-    public static int numPlayers;
+    public static int numPlayers = Game.getPlayerCount();
 
     @FXML
     private Label welcomeText;
@@ -19,11 +19,12 @@ public class HelloController {
 
         ArrayList<Card> deck = Game.deck;
 
-        for (Card card : deck) {
-            System.out.println(card.toString());
-        }
+//        for (Card card : deck) {
+//            System.out.println(card.toString());
+//        }
 
         System.out.println("Deck Size: " + deck.size());
+
 //
 //        Game.DrawCard();
     }

@@ -19,8 +19,10 @@ public class StartScreenController {
     @FXML
     protected void onGameStart(ActionEvent event) throws IOException {
         // Placeholder (Testing Number Of Players)
-        HelloController.numPlayers = choiceBox.getValue();
+        Game.setPlayerCount(choiceBox.getValue());
 
-        ChangeScene.changeScene(event, "hello-view.fxml");
+        Game.InitializeGame();
+
+        ChangeScene.changeScene(event, "game-screen.fxml");
     }
 }
