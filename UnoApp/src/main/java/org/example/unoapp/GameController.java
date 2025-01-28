@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
@@ -45,16 +46,26 @@ public class GameController implements Initializable {
 
     @FXML
     void DrawCard(MouseEvent event) {
-
+        //
     }
 
     @FXML
     void PlayCard(MouseEvent event) {
-
+        //
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(HelloController.numPlayers);
+
+        // Set text for current player
+        Player currentPlayer = Game.playerTurn;
+        currentPlayerTurn.setText("Make your move " + currentPlayer.getName() + "!");
+
+        // Set Player cards numbers
+        ArrayList<Player> players = Game.players;
+        for(int i = 0; i <= players.size(); i++) {
+
+        }
+
     }
 }

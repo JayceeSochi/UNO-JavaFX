@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="playerCardNumInfo" prefHeight="30.0" prefWidth="106.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="playerNumber" layoutX="14.0" layoutY="6.0" text="Player 1" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="60.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@cards-icon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="playerCardAmount" layoutX="87.0" layoutY="6.0" text="x1" />
+   </children>
+</Pane>
