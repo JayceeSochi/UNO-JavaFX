@@ -11,7 +11,7 @@ public class Game {
 
     static ArrayList<Player> players = new ArrayList<>();
 
-    private ArrayList<Card> hand = new ArrayList<>();
+    private static ArrayList<Card> hand = new ArrayList<>();
 
     private static String winner = "";
 
@@ -84,6 +84,8 @@ public class Game {
         }
 
         Collections.shuffle(deck);
+
+        System.out.println("Total Cards: " + deck.size());
     }
 
     public static void SetupPlayers() {
@@ -102,11 +104,15 @@ public class Game {
                 Card card = deck.get(rand.nextInt(deck.size()));
                 deck.remove(card);
 
-                System.out.println(i + 1 + ") " + card.toString());
+                //System.out.println(i + 1 + ") " + card.toString());
 
                 p.getCards().add(card);
             }
+
+            System.out.println(p);
         }
+
+        System.out.println("Remaining Cards: " + deck.size());
     }
 
     public static void DrawCard() {
@@ -122,6 +128,8 @@ public class Game {
         } else {
             playerTurn = players.get(0);
         }
+
+        hand = playerTurn.getCards();
 
         System.out.println("It is " + playerTurn.getName() + "s turn.");
     }
