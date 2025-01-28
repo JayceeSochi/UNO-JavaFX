@@ -90,7 +90,7 @@ public class Game {
 
     public static void SetupPlayers() {
         for (int i = 0; i < playerCount; i++) {
-            players.add(new Player("Player" + i));
+            players.add(new Player("Player" + (i + 1)));
         }
 
         playerTurn = players.get(0);
@@ -100,7 +100,7 @@ public class Game {
         Random rand = new Random();
 
         for (Player p : players) {
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 7; i++) {
                 Card card = deck.get(rand.nextInt(deck.size()));
                 deck.remove(card);
 
